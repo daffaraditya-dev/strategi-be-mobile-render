@@ -1,0 +1,52 @@
+services:
+  - type: web
+    name: strategi-mobile-be
+    env: node
+    rootDir: .
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3003
+      - key: BASIC_AUTH_USERNAME
+        sync: false
+      - key: BASIC_AUTH_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 1d
+      - key: JWT_REFRESH_EXPIRES_IN
+        value: 7d
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: 5432
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_NAME
+        sync: false
+      - key: DB_TYPE
+        value: postgres
+      - key: HUBNET_API_URL
+        sync: false
+      - key: HUBNET_BACKEND_API_URL
+        sync: false
+      - key: HUBNET_BACKEND_API_KEY
+        sync: false
+      - key: RSS_URL
+        sync: false
+      - key: CACHE_DURATION
+        value: 5 minutes
+      - key: CACHE_TTL
+        value: 300
+      - key: CACHE_DIR
+        value: /tmp/cache
+      - key: UPLOAD_DIR
+        value: /tmp/uploads
+      - key: LIVE_SERVER_URL
+        sync: false
