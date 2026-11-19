@@ -1,0 +1,74 @@
+import express, { Express } from "express";
+import apicache from "apicache";
+import health from "./routes/health";
+import auth from "./routes/auth";
+import summary from "./routes/summary";
+import news from "./routes/news";
+import moda from "./routes/moda";
+import incidentReport from "./routes/incidentReport";
+import cctv from "./routes/cctv";
+import posko from "./routes/posko";
+import focus from "./routes/focus";
+import comparison from "./routes/comparison";
+import thirtySeconds from "./routes/thirtySeconds";
+import coverage from "./routes/coverage";
+import performanceReport from "./routes/performanceReport";
+import report from "./routes/report";
+import master from "./routes/master";
+import simpul from "./routes/transportationHub";
+import simpulv2 from "./routes/v2/transportationHub";
+import aggregateV2 from "./routes/v2/aggregate";
+import regionalV2 from "./routes/v2/regional";
+import comparisonV2 from "./routes/v2/comparison";
+import focusV2 from "./routes/v2/focus";
+import summaryV2 from "./routes/v2/summary";
+import odV2 from "./routes/v2/od";
+import operatorV2 from "./routes/v2/operator";
+import syncMatrik from "./routes/syncData";
+import generals from "./routes/v2/generals";
+import incidentReportV2 from "./routes/v2/incidentReport";
+import reportingV2 from "./routes/v2/reporting";
+import storageV2 from "./routes/v2/storage";
+import poskoV2 from "./routes/v2/posko";
+import appSettings from "./routes/v2/appSettings";
+import path from "path";
+import { config } from "@/config";
+
+export const registerRoute = (app: Express) => {
+  app.use("/health", health);
+  app.use("/auth", auth);
+
+  app.use("/uploads", express.static(config.uploadDir));
+
+  app.use("/summary", summary);
+  app.use("/news", news);
+  app.use("/moda", moda);
+  app.use("/incident-report", incidentReport);
+  app.use("/cctv", cctv);
+  app.use("/posko", posko);
+  app.use("/focus", focus);
+  app.use("/comparison", comparison);
+  app.use("/30-seconds", thirtySeconds);
+  app.use("/coverage", coverage);
+  app.use("/performance-report", performanceReport);
+  app.use("/report", report);
+  app.use("/master", master);
+  app.use("/simpul", simpul);
+  app.use("/sync", syncMatrik);
+
+  // v2
+  app.use("/v2/simpul", simpulv2);
+  app.use("/v2/aggregate", aggregateV2);
+  app.use("/v2/regional", regionalV2);
+  app.use("/v2/comparison", comparisonV2);
+  app.use("/v2/focus", focusV2);
+  app.use("/v2/summary", summaryV2);
+  app.use("/v2/od", odV2);
+  app.use("/v2/operator", operatorV2);
+  app.use("/v2/generals", generals);
+  app.use("/v2/incident-report", incidentReportV2);
+  app.use("/v2/reporting", reportingV2);
+  app.use("/v2/storage", storageV2);
+  app.use("/v2/laporan-posko", poskoV2);
+  app.use("/v2/app-settings", appSettings);
+};

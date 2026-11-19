@@ -1,0 +1,14 @@
+stages:          # List of stages for jobs, and their order of execution
+  - build
+
+build-job:       # This job runs in the build stage, which runs first.
+  stage: build
+  tags:
+    - server
+  only: 
+    - development
+  script:
+    - echo "Move to directory"
+    - cd /home/app/
+    - echo "Execute build script"
+    - bash build.sh
